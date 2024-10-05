@@ -9,6 +9,8 @@ import Cart from './pages/Cart';
 import { useAppContext } from './components/AppContext';
 import PrivateRoute from './components/privateRoute';
 import Login from './pages/Login';
+import Clothes from './pages/Clothes';
+import Electrics from './pages/Electrics';
 function App() {
   const {login} = useAppContext()
   return (
@@ -18,6 +20,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Main />} />
             <Route path='/store' element={<Store />} />
+            <Route path='/clothes' element={<Clothes />} />
+            <Route path='/electrics' element={<Electrics />} />
             <Route path='/login' element={ login ? <Navigate to={"/"} /> :<Login />} />
             <Route path='/product/:id' element={<ProductPage />} />
             <Route element={<PrivateRoute />}>
