@@ -20,7 +20,7 @@ export default function NavbarSite(){
                     <Button variant="normal" className=" float-right mt-2 mr-2"> <ShoppingCartIcon /> </Button>
                     <span className=" right-0 top-0 absolute w-6 h-6 rounded-full p-1 flex justify-center items-center bg-red-700">{getQTY}</span>
                   </Link>
-                  {login ?
+                  {login  ?
                     <Button onClick={handleOutlogin} variant="login" className="float-right mt-2.3 mr-4">logOut</Button> :
                   <Link to={'/login'}>
                     <Button variant="login" className="float-right mt-2.3 mr-4">login</Button>

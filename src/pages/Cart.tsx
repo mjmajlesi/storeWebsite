@@ -10,14 +10,14 @@ export default function Cart() {
       <Container>
         { cardItems.map(items => (
            <Carts {...items}/>
-        ))}
+        )) }
 
         <div className='bg-gray-200 p-3'>
-          <h3>price: {}$</h3>
-          <h3>off: 3$</h3>
-          <h2>priceWithOff: 22$</h2>
-        </div>
-        <Button className='my-3 !p-3' variant='seccece'>Submit</Button>
+            <h3>price: {}$</h3>
+            <h3>off: 3$</h3>
+            <h2>priceWithOff: 22$</h2>
+          </div>
+          <Button className='my-3 !p-3' variant='seccece'>Submit</Button>
       </Container>
     </div>
   )

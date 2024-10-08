@@ -5,6 +5,7 @@ import { IProdect } from '../pages/store'
 import { getProdect } from '../services/api'
 import { Link } from 'react-router-dom'
 
+
 export default function Carts({id , qty }:ICardItems) {
 
   const {AppDeCountCards , AppInCountCards ,AppRemoveCards} = useAppContext()
@@ -12,7 +13,7 @@ export default function Carts({id , qty }:ICardItems) {
   const [ Prodect , setPrudect] = useState<IProdect>()
   useEffect(() => {
     getProdect(id).then((res) =>{
-      setPrudect(res) 
+      setPrudect(res)
     })
   }, [id])
 

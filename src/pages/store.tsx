@@ -28,7 +28,7 @@ export default function Store() {
     <div>
       <Container>
         <h1 className='m-5'>The new products</h1>
-        <div className='grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4'>
+        <div className='grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 mb-5'>
           {
             Product?.map((prudect)=>(
               <Link key={prudect.id} to={`/product/${prudect.id}`}>

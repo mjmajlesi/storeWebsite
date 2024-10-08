@@ -11,6 +11,7 @@ import PrivateRoute from './components/privateRoute';
 import Login from './pages/Login';
 import Clothes from './pages/Clothes';
 import Electrics from './pages/Electrics';
+import Footer from './components/footer';
 function App() {
   const {login} = useAppContext()
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route path='/cart' element={<Cart />} />
             </Route>
           </Routes>
+          <Footer />
         </Layout>
       </>
   );

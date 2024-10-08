@@ -6,15 +6,18 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "shajarian" : "url('/src/images/Shajarian.jpg')"
+        "digital" : "url('/src/images/digital-goods.jpg')",
+        "clothes" : "url('/src/images/clothes.jpg')"
       },
       height : {
         "200" : "200px",
         "1/2vh" : "50vh" ,
-        "450":"450px"
+        "400":"400px" ,
+        "450" : "450px",
       },
       width:{
         "500" : "500px",
+        "46" : "46%",
       },
       margin : {
         "2.3" : "9px"

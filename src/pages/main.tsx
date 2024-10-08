@@ -1,19 +1,61 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Container from '../components/container'
 import { IProdect } from './store'
 import { getProducts } from '../services/api'
 import { Link } from 'react-router-dom'
-import Products from '../components/Products'
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
-import "../App.css"
-import Button from '../components/buttuns'
+import "../App.css";
+import Button from '../components/buttuns';
+import express from '../images/express-delivery.svg';
+import cash from '../images/cash-on-delivery.svg';
+import Dreturn from '../images/days-return.svg';
+import Oprudect from '../images/original-products.svg';
+import Products from '../components/Products'
 export default function Main() {
   
     const [Product , setProduct] = useState<IProdect[]>()
     useEffect(() => {
       getProducts().then(res => setProduct(res))
     }, [])
+
+    var settings = {
+      dots: true,
+      infinite: false,
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    };
 
   return (
     <Container>
@@ -81,26 +123,36 @@ export default function Main() {
            </motion.div>
           </div>
         </div>
-      <span className='my-5 float-left text-lg'> prudects </span>
-        <div className='mt-20 grid grid-cols-5 scrolling-wrapper-flexbox scrolling-wrapper'>
-        {
-            Product?.map((prudect)=>(
-              <Link key={prudect.id} to={`/product/${prudect.id}`}>
-                <Products {...prudect}/>
-              </Link>
-            ))
-          }
+          <motion.h3
+          initial={{y:"-1rem" , opacity:0}}
+          animate={{y:0 , opacity:1 }}
+          transition={{
+           duration:2 ,
+           type: "ease-in",
+          }} 
+          className='mt-5 mb-3 text-3xl text-center'> prudects </motion.h3>
+            <div className='my-10'>
+              <div className="slider-container">
+              <Slider {...settings}>
+                  {
+                    Product?.map((prudect)=>(
+                      <Link key={prudect.id} to={`/product/${prudect.id}`}>
+                        <Products {...prudect} />
+                      </Link>
+                    ))
+                  }
+            </Slider>
         </div>
-
-        <div className='flex items-center justify-between flex-wrap py-6'>
-          <div className='w-5/12 h-200 bg-lime-900 '>
+      </div>
+        <div className='flex items-center justify-between flex-wrap my-10 pt-10'>
+          <div className='w-46 h-200 bg-clothes'>
           <Link to='/clothes'>
-            <p className=' flex items-center justify-center h-200 text-3xl'>
+            <p className=' flex items-center justify-center h-200 text-white text-3xl'>
               Clothes
             </p>
             </Link>
           </div>
-            <div className='w-5/12 h-200 bg-lime-600 '>
+            <div className='w-46 h-200 bg-digital text-white'>
             <Link to='/electrics'>
               <p className=' flex items-center justify-center h-200 text-3xl'>
                 Electrical appliances
@@ -108,6 +160,25 @@ export default function Main() {
             </Link>
           </div>
         </div>
+
+        <div className='flex items-center gap-8 flex-wrap justify-around my-14'>
+          <div className='flex flex-col items-center'>
+            <img className='shrink' src={cash} alt="cash" />
+            <span>Non-cash payment</span>
+          </div>
+          <div className='flex flex-col items-center'>
+            <img className='shrink' src={Dreturn} alt="D-return" />
+            <span>Seven day delivery</span>
+          </div>
+          <div className='flex flex-col items-center'>
+            <img className='shrink' src={express} alt="express" />
+            <span>Fast shipping</span>
+          </div>
+          <div className='flex flex-col items-center'>
+            <img className='shrink' src={Oprudect} alt="O-prudect" />
+            <span>Product authenticity</span>
+          </div>
+        </div>
     </Container>
   )
-};
+}
