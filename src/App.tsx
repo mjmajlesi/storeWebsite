@@ -16,7 +16,7 @@ function App() {
   const {login} = useAppContext()
   return (
       <>
-        <Layout >
+        <Layout>
           <NavbarSite />
           <Routes>
             <Route path='/' element={<Main />} />

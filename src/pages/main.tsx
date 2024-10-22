@@ -60,10 +60,10 @@ export default function Main() {
   return (
     <Container>
         <div className="flex justify-between items-center flex-wrap gap-8 pb-8 ">
-          <div className="flex flex-col gap-12 p-4">
+          <div className="flex flex-col gap-8 p-4">
             <div className="head">
                 <motion.h1
-                className="text-6xl font-bold"
+                className="text-5xl font-bold"
                   initial={{ y: "1.5rem", opacity: 0.1 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{
@@ -75,7 +75,7 @@ export default function Main() {
                   mjmShop!
                 </motion.h1>
             </div>
-            <div className="flex flex-col text-sm items-center">
+            <div className="flex flex-col text-base items-center">
               <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
               <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</span>
             </div>
