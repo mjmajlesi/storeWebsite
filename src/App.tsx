@@ -12,10 +12,11 @@ import Login from './pages/Login';
 import Clothes from './pages/Clothes';
 import Electrics from './pages/Electrics';
 import Footer from './components/footer';
+import { ThemeProvider } from './pages/toggleTheme';
 function App() {
   const {login} = useAppContext()
   return (
-      <>
+      <ThemeProvider>
         <Layout>
           <NavbarSite />
           <Routes>
@@ -31,7 +32,7 @@ function App() {
           </Routes>
           <Footer />
         </Layout>
-      </>
+      </ThemeProvider>
   );
 }
 
