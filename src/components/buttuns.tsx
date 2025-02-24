@@ -20,7 +20,7 @@ function Changevariant(variant? : Tvariant) {
     case "dark":
       return {backgroundColor : "white" , color : "black"}
     case "login":
-      return {backgroundColor : "blue" , color : "white"}
+      return {backgroundColor : "#1e98d5" , color : "white"}
       case "seccece":
       return {backgroundColor : "green" , color : "white" , padding : " 0 4px"}
       case "danger":
