@@ -4,9 +4,15 @@ Hello everyone, in this project :
 I tried to complete this project by using the popular JavaScript framework , Reactjs
 and by using the TypeScript language, Tailwind framework, and [Material UI](https://mui.com/material-ui/). 🔥
 
-![image 1](/src/images/readme/image1.png)
+### main page
 
-![image 2](/src/images/readme/image2.png)
+![image 1](/src/images/readme/mainpage1.png)
+
+![image 2](/src/images/readme/mainpage2.png)
+
+### Store page
+
+![image 3](/src/images/readme/Store.png)
 
 ## Project features
 
@@ -20,7 +26,6 @@ and by using the TypeScript language, Tailwind framework, and [Material UI](http
 ## Features that will be added in the future:
 
 - Responsive
-- Dark mode 
 
 ## Part of App.tsx
 ```Javascript
@@ -49,6 +54,11 @@ function App() {
 
 export default App;
 ```
+
+### for run db.json
+ 
+``` npx json-server db.json -p 8001 ```
+
 ## For more :
 [github](https://github.com/mjmajlesi) <br>
 [telegram](https://t.me/Mj_majlesi)
