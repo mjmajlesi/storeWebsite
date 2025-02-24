@@ -5,6 +5,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundColor: {
+        "main" : "#010211",
+        "Blue" : "#1e98d5"
+      },
+      textColor: {
+        "Blue" : "#1e98d5"
+      },
       backgroundImage: {
         "digital" : "url('/src/images/digital-goods.jpg')",
         "clothes" : "url('/src/images/clothes.jpg')"

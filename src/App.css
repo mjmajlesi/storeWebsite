@@ -35,11 +35,8 @@
     --bg-navbar-dark: rgb(29, 29, 58);
   }
   
-  .light-theme {
-    nav{
-      background-color: white;
-      color: black;
-    }
+  body{
+    @apply bg-main text-white
   }
   
   .dark-theme {
