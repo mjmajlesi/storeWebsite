@@ -9,7 +9,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import "../App.css";
-import Button from '../components/buttuns';
 import express from '../images/express-delivery.svg';
 import cash from '../images/cash-on-delivery.svg';
 import Dreturn from '../images/days-return.svg';
@@ -70,11 +69,11 @@ export default function Main() {
 
   return (
     <Container>
-      <div className="flex justify-between items-center flex-wrap gap-8 pb-8 px-8">
-        <div className="flex flex-col gap-8 p-4">
+      <div className="flex justify-between items-center flex-wrap gap-8 pb-8 px-8 ">
+        <div className="flex flex-col gap-12 p-4">
           <div className="head">
             <motion.h1
-              className="text-5xl font-bold"
+              className="text-[48px] font-bold"
               initial={{ y: "1.5rem", opacity: 0.1 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{
@@ -86,33 +85,28 @@ export default function Main() {
               Shop!
             </motion.h1>
           </div>
-          <div className="flex flex-col text-base items-center">
-            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-            <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</span>
+          <div className="flex flex-col text-[16px] items-start">
+            <span>This Simple Website For Shopping... </span>
+            <span>Electrical , Clothes and everythings for needed !</span>
           </div>
-          <div className="flex items-center bg-white rounded-sm border-4 py-2 px-1 w-full justify-between">
-            <input className="border-none outline-none text-slate-800 px-4" type="text" />
-            <Button variant="login" className="button">Search</Button>
-          </div>
-
           <div className="flex items-center flex-wrap gap-8 w-full justify-between">
             <div className="flex flex-col items-center justify-center text-3xl">
               <span>
-                <CountUp start={8800} end={9000} duration={4} /> <span className="text-orange-600">+</span>
+                <CountUp start={8800} end={9000} duration={4} /> <span className="text-Blue">+</span>
               </span>
               <span className="text-sm">Premium Product</span>
             </div>
 
             <div className="flex flex-col items-center justify-center text-3xl ">
               <span>
-                <CountUp start={1950} end={2000} duration={4} /> <span className="text-orange-600">+</span>
+                <CountUp start={1950} end={2000} duration={4} /> <span className="text-Blue">+</span>
               </span>
               <span className="text-sm">Happy Customer</span>
             </div>
 
             <div className="flex flex-col items-center justify-center text-3xl">
               <span>
-                <CountUp start={26} end={28} /> <span className=" text-orange-600">+</span>
+                <CountUp start={26} end={28} /> <span className=" text-Blue">+</span>
               </span>
               <span className="text-sm">Awards Winning</span>
             </div>
@@ -124,8 +118,8 @@ export default function Main() {
           >
             <Lottie
               options={defaultOptions}
-              height={400}
-              width={400}
+              height={350}
+              width={350}
             />
           </div>
         </div>
@@ -151,15 +145,15 @@ export default function Main() {
           </Slider>
         </div>
       </div>
-      <div className='flex items-center justify-between flex-wrap my-10 pt-10'>
-        <div className='w-46 h-200 bg-clothes'>
+      <div className='flex items-center justify-between flex-wrap my-10 pt-10 '>
+        <div className='w-46 h-200 bg-clothes rounded-xl'>
           <Link to='/clothes'>
             <p className=' flex items-center justify-center h-200 text-white text-3xl'>
               Clothes
             </p>
           </Link>
         </div>
-        <div className='w-46 h-200 bg-digital text-white'>
+        <div className='w-46 h-200 bg-digital text-white rounded-xl'>
           <Link to='/electrics'>
             <p className=' flex items-center justify-center h-200 text-3xl'>
               Electrical appliances
