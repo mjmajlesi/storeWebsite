@@ -23,6 +23,7 @@ export default function Main() {
     getProducts().then(res => setProduct(res))
   }, [])
 
+  // settings for slider's Product
   var settings = {
     dots: true,
     infinite: false,
@@ -69,12 +70,12 @@ export default function Main() {
 
   return (
     <Container>
-      <div className="flex justify-between items-center flex-wrap gap-8 pb-8 px-8 ">
-        <div className="flex flex-col gap-12 p-4">
+      <div className="flex justify-between items-center flex-wrap gap-8 py-12 lg:p-12">
+        <div className="flex flex-col gap-12 p-6">
           <div className="head">
             <motion.h1
-              className="text-[48px] font-bold"
-              initial={{ y: "1.5rem", opacity: 0.1 }}
+              className="text-[32px] lg:text-[48px] font-bold font-sans"
+              initial={{ y: "2rem", opacity: 0.1 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{
                 duration: 2,
@@ -85,14 +86,14 @@ export default function Main() {
               Shop!
             </motion.h1>
           </div>
-          <div className="flex flex-col text-[16px] items-start">
+          <div className="flex flex-col text-[16px] lg:text-[20px] items-start">
             <span>This Simple Website For Shopping... </span>
             <span>Electrical , Clothes and everythings for needed !</span>
           </div>
           <div className="flex items-center flex-wrap gap-8 w-full justify-between">
             <div className="flex flex-col items-center justify-center text-3xl">
               <span>
-                <CountUp start={8800} end={9000} duration={4} /> <span className="text-Blue">+</span>
+                <CountUp start={8800} end={9000} duration={2} /> <span className="text-Blue">+</span>
               </span>
               <span className="text-sm">Premium Product</span>
             </div>
@@ -106,13 +107,13 @@ export default function Main() {
 
             <div className="flex flex-col items-center justify-center text-3xl">
               <span>
-                <CountUp start={26} end={28} /> <span className=" text-Blue">+</span>
+                <CountUp start={16} end={28} /> <span className=" text-Blue">+</span>
               </span>
               <span className="text-sm">Awards Winning</span>
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-center flex-wrap">
+        <div className="flex items-center justify-center flex-wrap max-lg:hidden">
           <div
             className="overflow-hidden rounded-lg"
           >
@@ -131,9 +132,9 @@ export default function Main() {
           duration: 2,
           type: "ease-in",
         }}
-        className='mt-8 mb-3 text-3xl text-center'> prudects </motion.h3>
-      <div className='my-10'>
-        <div className="slider-container">
+        className='mt-8 mb-3 text-[40px] text-center font-sans'> prudects </motion.h3>
+      <div className='my-10 border-4 border-gray-600 rounded-2xl'>
+        <div className="slider-container p-6">
           <Slider {...settings}>
             {
               Product?.map((prudect) => (
@@ -148,7 +149,7 @@ export default function Main() {
       <div className='flex items-center justify-between flex-wrap my-10 pt-10 '>
         <div className='w-46 h-200 bg-clothes rounded-xl'>
           <Link to='/clothes'>
-            <p className=' flex items-center justify-center h-200 text-white text-3xl'>
+            <p className=' hover:translate-y-6 transition-all hover:font-semibold flex items-center justify-center h-200 text-white text-3xl'>
               Clothes
             </p>
           </Link>
