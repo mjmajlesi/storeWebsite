@@ -149,7 +149,7 @@ export default function Main() {
       <div className='flex items-center justify-between flex-wrap my-10 pt-10 '>
         <div className='w-46 h-200 bg-clothes rounded-xl'>
           <Link to='/clothes'>
-            <p className=' hover:translate-y-6 transition-all hover:font-semibold flex items-center justify-center h-200 text-white text-3xl'>
+            <p className='flex items-center justify-center h-200 text-white text-3xl'>
               Clothes
             </p>
           </Link>
