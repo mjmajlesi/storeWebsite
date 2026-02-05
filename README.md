@@ -22,10 +22,7 @@ and by using the TypeScript language, Tailwind framework, and [Material UI](http
 4. this project completely written by typescript. 
 5. API and data available on the site, due to the lack of a backend developer, fake api is used, which is available in the Json file.
 6. After adding the product, the user can go to the shopping cart and view his product, add or remove it if needed.
-
-## Features that will be added in the future:
-
-- Responsive
+7. Responsive website for any device screens
 
 ## Part of App.tsx
 ```Javascript
