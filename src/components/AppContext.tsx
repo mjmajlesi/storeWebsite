@@ -5,114 +5,106 @@ import { FLogin } from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 interface IContext {
-    cardItems : ICardItems[]
-    AppInCountCards: (id : number) => void
-    AppDeCountCards : (id : number) => void
-    getCountCards : (id : number) => number
-    AppRemoveCards : (id : number) => void
-    getQTY : number
-    login : Boolean
-    handleLogin : (username : string , password : string) => void
-    handleOutlogin : () => void
-};
+    cardItems: ICardItems[]
+    incrementCardItem: (id: number) => void
+    decrementCardItem: (id: number) => void
+    getCardItemCount: (id: number) => number
+    removeCardItem: (id: number) => void
+    cartQuantity: number
+    login: boolean
+    handleLogin: (username: string, password: string) => void
+    handleLogout: () => void
+}
 
-export interface ICardItems { 
-    id : number
-    qty : number
-    //qty = count تعداد خرید کاربر
-};
+export interface ICardItems {
+    id: number
+    qty: number
+}
+
 export const AppShoppingCard = createContext({} as IContext);
 
-// custom Hook for useContext
-export const useAppContext = ()=>{
+// Custom hook for consuming the AppShoppingCard context
+export const useAppContext = () => {
     return useContext(AppShoppingCard)
 };
 
-const AppContext = ({children}: Tchildern)=>{
-    const [ cardItems , setCardItems] = useLocalStorage<ICardItems[]>("cardItems" , [])
-    const [login , setLogin] = useState<Boolean>(false)
+const AppContext = ({ children }: Tchildern) => {
+    const [cardItems, setCardItems] = useLocalStorage<ICardItems[]>("cardItems", [])
+    const [login, setLogin] = useState<boolean>(false)
 
     const navigate = useNavigate()
 
-    const AppInCountCards = (id: number)=>{
-        setCardItems( cardItem => {
-
-            const findCarts = cardItem.find(item => item.id === id)
-            if(!findCarts){
-                return [...cardItem , {id : id , qty : 1}]
+    const incrementCardItem = (id: number) => {
+        setCardItems(prev => {
+            const existingItem = prev.find(item => item.id === id)
+            if (!existingItem) {
+                return [...prev, { id, qty: 1 }]
             }
-            else{
-                return cardItem.map(items => {
-                    return items.id === id ? {...items , qty : items.qty + 1} : items
-                })
-            }
+            return prev.map(item =>
+                item.id === id ? { ...item, qty: item.qty + 1 } : item
+            )
         })
     };
 
-    const AppDeCountCards = (id : number ) => {
-        setCardItems( cardItem => {
-            const findCarts = cardItem.find(item => item.id === id);
-            if(findCarts?.qty === 1){
-                return cardItem.filter(item => item.id !== id)
-            } else{
-                return cardItem.map(items => items.id === id ? {...items , qty : items.qty - 1} : items )
+    const decrementCardItem = (id: number) => {
+        setCardItems(prev => {
+            const existingItem = prev.find(item => item.id === id)
+            if (existingItem?.qty === 1) {
+                return prev.filter(item => item.id !== id)
             }
+            return prev.map(item =>
+                item.id === id ? { ...item, qty: item.qty - 1 } : item
+            )
         })
     };
 
-    const AppRemoveCards = (id : number)=>{
-        setCardItems(cardItem => cardItem.filter((items => items.id !== id)))
+    const removeCardItem = (id: number) => {
+        setCardItems(prev => prev.filter(item => item.id !== id))
     }
 
-    const getCountCards = (id : number)=>{
+    const getCardItemCount = (id: number) => {
         return cardItems.find(item => item.id === id)?.qty || 0
     }
 
-    const getQTY = cardItems.reduce((qty , item )=> qty + item.qty , 0)
+    const cartQuantity = cardItems.reduce((total, item) => total + item.qty, 0)
 
-    ////
-    
-    const handleLogin = (username:string , password : string)=>{
-            FLogin(username , password).finally(()=>{
-                let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-                localStorage.setItem("token" , token)
-                setLogin(true)
-                navigate("/")
-            });
+    const handleLogin = (username: string, password: string) => {
+        FLogin(username, password).finally(() => {
+            // Note: In production, a real JWT would be stored here.
+            // For demo purposes, a placeholder token is used.
+            const token = "eyJhbG...VCJ9..."
+            localStorage.setItem("token", token)
+            setLogin(true)
+            navigate("/")
+        });
     };
 
-    ////
-
-    const handleOutlogin = ()=>{
+    const handleLogout = () => {
         setLogin(false)
         navigate("/login")
         localStorage.removeItem("token")
     };
 
     useEffect(() => {
-        let token = localStorage.getItem("token")
-        token && setLogin(true)
+        const token = localStorage.getItem("token")
+        if (token) setLogin(true)
     }, [])
-    
-    return(
-        <AppShoppingCard.Provider value={{cardItems ,
-        AppInCountCards ,
-        AppDeCountCards ,
-        getCountCards ,
-        AppRemoveCards , 
-        getQTY ,
-        login ,
-        handleLogin ,
-        handleOutlogin}}>
+
+    return (
+        <AppShoppingCard.Provider value={{
+            cardItems,
+            incrementCardItem,
+            decrementCardItem,
+            getCardItemCount,
+            removeCardItem,
+            cartQuantity,
+            login,
+            handleLogin,
+            handleLogout,
+        }}>
             {children}
         </AppShoppingCard.Provider>
-
     );
 };
+
 export default AppContext
-
-
-
-/* export const AppShoppingCard = createContext({} as IContext);
-== 
-export const AppShoppingCard = createContext<IContext>({cardItems : ICardItems[]}); */

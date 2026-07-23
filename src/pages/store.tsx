@@ -4,7 +4,7 @@ import Container from "../components/container";
 import { Link } from "react-router-dom";
 import { getProducts } from "../services/api";
 
-export interface IProdect {
+export interface IProduct {
   id: string;
   title: string;
   price: number;
@@ -18,16 +18,24 @@ export interface IProdect {
 }
 
 export default function Store() {
-  const [Product, setProduct] = useState<IProdect[]>();
+  const [products, setProducts] = useState<IProduct[]>();
   const [search, setSearch] = useState("");
+
   useEffect(() => {
-    getProducts().then((res) => setProduct(res));
+    getProducts().then((res) => setProducts(res));
   }, []);
+
+  const filteredProducts = search === ""
+    ? products
+    : products?.filter(product =>
+        product.title.toLowerCase().includes(search.toLowerCase()) ||
+        product.description.toLowerCase().includes(search.toLowerCase())
+      );
 
   return (
     <Container>
       <div className="flex justify-between relative ms:hidden gap-8">
-        <div className=" md:flex md:flex-col hidden gap-9 h-screen w-1/5">
+        <div className="md:flex md:flex-col hidden gap-9 h-screen w-1/5">
           <h1 className="font-bold text-3xl text-gray-300">Filters</h1>
           <ul className="flex flex-col justify-center items-start gap-3">
             <li>
@@ -48,32 +56,15 @@ export default function Store() {
             />
           </div>
         </div>
-        {search === "" ? (
-          <div>
-            <div className="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mb-5">
-              {Product?.map((pruduct) => (
-                <Link key={pruduct.id} to={`/product/${pruduct.id}`}>
-                  <Products {...pruduct} />
-                </Link>
-              ))}
-            </div>
+        <div>
+          <div className="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mb-5">
+            {filteredProducts?.map((product) => (
+              <Link key={product.id} to={`/product/${product.id}`}>
+                <Products {...product} />
+              </Link>
+            ))}
           </div>
-        ) : (
-          <div>
-            <div className="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mb-5">
-              {
-                Product?.filter(product => 
-                  product.title.toLowerCase().includes(search.toLowerCase()) || 
-                  product.description.toLowerCase().includes(search.toLowerCase())
-                ).map(pruducts => (
-                  <Link key={pruducts.id} to={`/product/${pruducts.id}`}>
-                  <Products {...pruducts} />
-                </Link>
-                ))
-              }
-            </div>
-          </div>
-        )}
+        </div>
       </div>
     </Container>
   );

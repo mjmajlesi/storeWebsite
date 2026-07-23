@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Container from '../components/container'
-import { IProdect } from './store'
+import { IProduct } from './store'
 import { getProducts } from '../services/api'
 import { Link } from 'react-router-dom'
 import Slider from "react-slick";
@@ -12,19 +12,20 @@ import "../App.css";
 import express from '../images/express-delivery.svg';
 import cash from '../images/cash-on-delivery.svg';
 import Dreturn from '../images/days-return.svg';
-import Oprudect from '../images/original-products.svg';
+import Oproduct from '../images/original-products.svg';
 import Products from '../components/Products'
 import Anime from './../images/AnimationShop.json'
 import Lottie from "react-lottie"
-export default function Main() {
 
-  const [Product, setProduct] = useState<IProdect[]>()
+export default function Main() {
+  const [products, setProducts] = useState<IProduct[]>()
+
   useEffect(() => {
-    getProducts().then(res => setProduct(res))
+    getProducts().then(res => setProducts(res))
   }, [])
 
   // settings for slider's Product
-  var settings = {
+  const settings = {
     dots: true,
     infinite: false,
     speed: 500,
@@ -82,27 +83,26 @@ export default function Main() {
                 type: "ease-in",
               }}
             >
-              Welcome to
-              Shop!
+              Welcome to Shop!
             </motion.h1>
           </div>
           <div className="flex flex-col text-[16px] lg:text-[20px] items-start">
             <span>This Simple Website For Shopping... </span>
-            <span>Electrical , Clothes and everythings for needed !</span>
+            <span>Electrical, Clothes and everything you need!</span>
           </div>
           <div className="flex items-center flex-wrap gap-8 w-full justify-between">
             <div className="flex flex-col items-center justify-center text-3xl">
               <span>
                 <CountUp start={8800} end={9000} duration={2} /> <span className="text-Blue">+</span>
               </span>
-              <span className="text-sm">Premium Product</span>
+              <span className="text-sm">Premium Products</span>
             </div>
 
             <div className="flex flex-col items-center justify-center text-3xl ">
               <span>
                 <CountUp start={1950} end={2000} duration={4} /> <span className="text-Blue">+</span>
               </span>
-              <span className="text-sm">Happy Customer</span>
+              <span className="text-sm">Happy Customers</span>
             </div>
 
             <div className="flex flex-col items-center justify-center text-3xl">
@@ -114,9 +114,7 @@ export default function Main() {
           </div>
         </div>
         <div className="flex items-center justify-center flex-wrap max-lg:hidden">
-          <div
-            className="overflow-hidden rounded-lg"
-          >
+          <div className="overflow-hidden rounded-lg">
             <Lottie
               options={defaultOptions}
               height={350}
@@ -132,17 +130,18 @@ export default function Main() {
           duration: 2,
           type: "ease-in",
         }}
-        className='mt-8 mb-3 text-[40px] text-center font-sans'> prudects </motion.h3>
+        className='mt-8 mb-3 text-[40px] text-center font-sans'
+      >
+        Products
+      </motion.h3>
       <div className='my-10 border-4 border-gray-600 rounded-2xl'>
         <div className="slider-container p-6">
           <Slider {...settings}>
-            {
-              Product?.map((prudect) => (
-                <Link key={prudect.id} to={`/product/${prudect.id}`}>
-                  <Products {...prudect} />
-                </Link>
-              ))
-            }
+            {products?.map((product) => (
+              <Link key={product.id} to={`/product/${product.id}`}>
+                <Products {...product} />
+              </Link>
+            ))}
           </Slider>
         </div>
       </div>
@@ -177,7 +176,7 @@ export default function Main() {
           <span>Fast shipping</span>
         </div>
         <div className='flex flex-col items-center'>
-          <img className='shrink' src={Oprudect} alt="O-prudect" />
+          <img className='shrink' src={Oproduct} alt="O-product" />
           <span>Product authenticity</span>
         </div>
       </div>

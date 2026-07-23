@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Container from "./container";
 import { Link } from "react-router-dom";
-import Button from "./buttuns";
+import Button from "./buttons";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useAppContext } from "./AppContext";
+
 export default function NavbarSite() {
-  const { getQTY, login, handleOutlogin } = useAppContext();
+  const { cartQuantity, login, handleLogout } = useAppContext();
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
@@ -19,6 +20,7 @@ export default function NavbarSite() {
       path: login ? "/store" : "/login",
     },
   ];
+
   return (
     <Container>
       <div className="flex items-center justify-between w-full p-3 mt-3">
@@ -39,17 +41,16 @@ export default function NavbarSite() {
         </div>
         <div className="relative max-[768px]:hidden">
           <Link to={"/cart"}>
-            <Button variant="normal" className=" float-right mr-2">
-              {" "}
-              <ShoppingCartIcon />{" "}
+            <Button variant="normal" className="float-right mr-2">
+              <ShoppingCartIcon />
             </Button>
-            <span className=" right-0 top-0 absolute w-6 h-6 rounded-full p-1 flex justify-center items-center bg-red-700">
-              {getQTY}
+            <span className="right-0 top-0 absolute w-6 h-6 rounded-full p-1 flex justify-center items-center bg-red-700">
+              {cartQuantity}
             </span>
           </Link>
           {login ? (
             <Button
-              onClick={handleOutlogin}
+              onClick={handleLogout}
               variant="login"
               className="float-right mr-4"
             >
@@ -67,7 +68,7 @@ export default function NavbarSite() {
           className={`md:hidden flex ${isMenuOpen ? "flex-row" : "flex-col"} items-center justify-center gap-1 cursor-pointer`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          {/* Mobile menu button */}
+          {/* Mobile menu button - hamburger icon */}
           {isMenuOpen ? (
             <>
               <div className="h-6 w-1 rounded-full bg-white" />
