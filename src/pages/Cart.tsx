@@ -5,27 +5,46 @@ import Carts from "../components/Carts";
 
 export default function Cart() {
   const { cardItems } = useAppContext();
+  const subtotal = cardItems.reduce((total, item) => total + (item.id * item.qty), 0);
+  const discount = cardItems.length > 0 ? 3 : 0;
+  const total = subtotal - discount;
+
   return (
-    <div>
+    <div className="bg-slate-950 text-white min-h-screen py-8">
       <Container>
-        <div className="grid grid-cols-3 gap-4">
-          {cardItems.map((item) => (
-            <Carts key={item.id} {...item} />
-          ))}
-        </div>
+        <h1 className="text-3xl font-bold mb-8">Your Shopping Cart</h1>
+
         {cardItems.length === 0 ? (
-          <h2 className="text-center text-2xl text-slate-300 font-semibold my-12">
-            Your cart is currently empty. Explore our products and add something awesome!
-          </h2>
+          <div className="text-center py-16 bg-slate-900 rounded-xl border border-slate-800">
+            <h2 className="text-2xl text-slate-300 font-semibold my-6">
+              Your cart is currently empty. Explore our products and add something awesome!
+            </h2>
+          </div>
         ) : (
-          <div className="flex flex-col items-center justify-center w-fit mx-auto my-6">
-            <div className="flex flex-col items-start justify-center gap-2">
-              <h3>price: {cardItems.reduce((add, price) => add + (price.id * price.qty), 0)} $</h3>
-              <h3>off: 3$</h3>
-              <h2>priceWithOff: {cardItems.reduce((add, price) => add + (price.id * price.qty), 0) - 3} $</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {cardItems.map((item) => (
+              <Carts key={item.id} {...item} />
+            ))}
+          </div>
+        )}
+
+        {cardItems.length > 0 && (
+          <div className="mt-10 bg-slate-900 rounded-xl p-6 shadow-lg border border-slate-800 lg:sticky lg:bottom-0 lg:mt-0 lg:ml-auto lg:max-w-md">
+            <h2 className="text-xl font-semibold mb-4">Price Summary</h2>
+            <div className="flex justify-between text-slate-300 mb-2">
+              <span>Subtotal</span>
+              <span>{subtotal} $</span>
             </div>
-            <Button className="my-3 !p-3" variant="login">
-              Submit
+            <div className="flex justify-between text-slate-300 mb-4">
+              <span>Discount</span>
+              <span>-{discount}$</span>
+            </div>
+            <div className="flex justify-between text-xl font-bold border-t border-slate-800 pt-4 mt-2">
+              <span>Total</span>
+              <span className="text-[#1e98d5]">{total}$</span>
+            </div>
+            <Button className="w-full !p-4 mt-6 text-lg" variant="login">
+              Proceed to Checkout
             </Button>
           </div>
         )}

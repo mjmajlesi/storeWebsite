@@ -20,33 +20,53 @@ export default function Carts({ id, qty }: ICardItems) {
   }, [id]);
 
   return (
-    <div className="my-3 p-3">
-      <Link to={`/product/${id}`}>
-        <img className="rounded-md w-36 h-36 object-contain" src={product?.image} alt={product?.title ?? "Product image"} />
+    <div className="bg-slate-900 rounded-xl p-4 shadow-lg border border-slate-800 flex flex-col sm:flex-row gap-4 items-center sm:items-start">
+      <Link to={`/product/${id}`} className="flex-shrink-0 w-full sm:w-24 h-24 sm:w-28 sm:h-28">
+        <img 
+          className="w-full h-full object-contain rounded-lg" 
+          src={product?.image} 
+          alt={product?.title ?? "Product image"} 
+        />
       </Link>
-      <div>
-        <h3 className="p-2">
-          {product?.title}
-        </h3>
-      </div>
-      <div className="flex flex-row items-center gap-2">
-        <Button className="" onClick={() => incrementCardItem(id)}>
-          <FaPlus />
-        </Button>
 
-        <span>{qty}</span>
+      <div className="flex-1 min-w-0">
+        <Link to={`/product/${id}`} className="block">
+          <h3 className="font-semibold text-white text-base sm:text-lg truncate">
+            {product?.title}
+          </h3>
+        </Link>
+        <div className="flex items-center gap-3 mt-3">
+          <Button 
+            className="p-2" 
+            onClick={() => incrementCardItem(id)}
+            variant="normal"
+            aria-label="Increase quantity"
+          >
+            <FaPlus size={18} />
+          </Button>
 
-        <Button className="" onClick={() => decrementCardItem(id)}>
-          <FaMinus />
-        </Button>
+          <span className="w-10 text-center font-mono text-lg text-white">
+            {qty}
+          </span>
 
-        <Button
-          className="p-1"
-          variant="normal"
-          onClick={() => removeCardItem(id)}
-        >
-          <IoIosRemoveCircleOutline size={30} />
-        </Button>
+          <Button 
+            className="p-2" 
+            onClick={() => decrementCardItem(id)}
+            variant="normal"
+            aria-label="Decrease quantity"
+          >
+            <FaMinus size={18} />
+          </Button>
+
+          <Button
+            className="p-2 ml-auto"
+            variant="danger"
+            onClick={() => removeCardItem(id)}
+            aria-label="Remove item"
+          >
+            <IoIosRemoveCircleOutline size={24} />
+          </Button>
+        </div>
       </div>
     </div>
   );
