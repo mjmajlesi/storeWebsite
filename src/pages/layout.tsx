@@ -1,12 +1,10 @@
-import React, { useContext } from 'react'
-import { Tchildern } from '../components/container'
-import { ThemeContext } from './toggleTheme'
-export default function Layout({children}:Tchildern) {
+import React from 'react';
+import { Tchildern } from '../components/container';
 
-  const {theme} = useContext(ThemeContext)
+export default function Layout({ children }: Tchildern) {
   return (
-    <div className={`${theme}`}>
-        {children}
+    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-brand-500 selection:text-white">
+      {children}
     </div>
-  )
+  );
 }

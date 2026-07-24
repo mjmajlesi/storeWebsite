@@ -2,47 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-.scrolling-wrapper-flexbox {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-  
-    .card {
-      flex: 0 0 auto;
-    }
-  }
-  .scrolling-wrapper {
-    -webkit-overflow-scrolling: touch;
-  }
+body {
+  @apply bg-main text-white font-sans antialiased;
+}
 
-  :root {
-    --primary-blue: rgb(0, 0, 255);
-    --secondary-blue: rgb(96, 96, 182);
-  
-    --text-primary-light: black;
-    --text-primary-dark: white;
-  
-    --text-secondary-light: rgb(70, 70, 70);
-    --text-secondary-dark: rgb(160, 160, 160);
-  
-    --bg-primary-light: white;
-    --bg-primary-dark: black;
-  
-    --bg-secondary-light: rgb(212, 212, 212);
-    --bg-secondary-dark: rgb(34, 34, 34);
-  
-    --bg-navbar-light: rgb(104, 104, 255);
-    --bg-navbar-dark: rgb(29, 29, 58);
-  }
-  
-  body{
-    @apply bg-main text-white font-[Poppins]
-  }
-  
-  .dark-theme {
-    --text-primary: var(--text-primary-dark);
-    --text-secondary: var(--text-secondary-dark);
-    --bg-primary: var(--bg-primary-dark);
-    --bg-secondary: var(--bg-secondary-dark);
-    --bg-navbar: var(--bg-navbar-dark);
-  }
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}

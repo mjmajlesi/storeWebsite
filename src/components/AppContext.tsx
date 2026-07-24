@@ -69,10 +69,10 @@ const AppContext = ({ children }: Tchildern) => {
     const cartQuantity = cardItems.reduce((total, item) => total + item.qty, 0)
 
     const handleLogin = (username: string, password: string) => {
-        FLogin(username, password).finally(() => {
+        FLogin(username, password).then(() => {
             // Note: In production, a real JWT would be stored here.
             // For demo purposes, a placeholder token is used.
-            const token = "eyJhbG...VCJ9..."
+            const token = "demo-token-mjm"
             localStorage.setItem("token", token)
             setLogin(true)
             navigate("/")
