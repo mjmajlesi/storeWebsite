@@ -1,27 +1,34 @@
-import axios from 'axios'
+/**
+ * Local mock API service.
+ * Replaces json-server + axios to make the app fully portable on GitHub Pages.
+ * All data is served from the strongly-typed mockData module.
+ * Simulated network latency (500ms) makes animations visible.
+ */
 
-const client = axios.create({
-    baseURL: "http://localhost:8001"
-})
+import { MOCK_PRODUCTS } from "../data/mockData";
+import { IProduct } from "../pages/store";
 
-export async function getProducts() {
-    const { data } = await client("/Products")
-    return data;
+function delay(ms: number = 500): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export async function getProduct(id: string | number) {
-    const { data } = await client(`/Products/${id}`)
-    return data;
+export async function getProducts(): Promise<IProduct[]> {
+  await delay();
+  // Return a shallow copy to avoid accidental mutations
+  return [...MOCK_PRODUCTS];
 }
 
-export async function FLogin(username: string, password: string) {
-    const { data } = await client({
-        method: "POST",
-        url: "/login",
-        data: {
-            username,
-            password
-        }
-    })
-    return data
+export async function getProduct(id: string | number): Promise<IProduct | undefined> {
+  await delay();
+  return MOCK_PRODUCTS.find((p) => p.id === String(id));
+}
+
+/**
+ * Simulated login endpoint.
+ * Accepts any username/password for demo purposes.
+ * In a real app this would validate credentials server-side.
+ */
+export async function FLogin(_username: string, _password: string): Promise<{ success: boolean }> {
+  await delay(800);
+  return { success: true };
 }
