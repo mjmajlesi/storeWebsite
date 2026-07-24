@@ -5,32 +5,32 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundColor: {
-        "main" : "#010211",
-        "Blue" : "#1e98d5"
+      colors: {
+        brand: {
+          50:  "#e6f5fc",
+          100: "#b3e0f7",
+          200: "#80cbf1",
+          300: "#4db5ec",
+          400: "#1e98d5",
+          500: "#1a7eb3",
+          600: "#156491",
+          700: "#104a6e",
+          800: "#0b314c",
+          900: "#061829",
+        },
       },
-      textColor: {
-        "Blue" : "#1e98d5"
+      backgroundColor: {
+        "main": "#030712",       /* gray-950 equivalent */
       },
       backgroundImage: {
-        "digital" : "url('/src/images/digital-goods.jpg')",
-        "clothes" : "url('/src/images/clothes.jpg')"
+        "digital": "url('/src/images/digital-goods.jpg')",
+        "clothes": "url('/src/images/clothes.jpg')",
       },
-      height : {
-        "200" : "200px",
-        "1/2vh" : "50vh" ,
-        "400":"400px" ,
-        "450" : "450px",
+      fontFamily: {
+        sans: ["Poppins", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["Lexend", "Poppins", "sans-serif"],
       },
-      width:{
-        "500" : "500px",
-        "46" : "46%",
-      },
-      margin : {
-        "2.3" : "9px"
-      }
     },
   },
   plugins: [],
 }
-
