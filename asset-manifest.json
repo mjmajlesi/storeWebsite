@@ -1,23 +1,43 @@
 {
   "files": {
-    "main.css": "/storeWebsite/static/css/main.bb8c7727.css",
-    "main.js": "/storeWebsite/static/js/main.320d8441.js",
+    "main.css": "/storeWebsite/static/css/main.7736a395.css",
+    "main.js": "/storeWebsite/static/js/main.7b97c5be.js",
+    "static/media/8.jpg": "/storeWebsite/static/media/8.2b7ddb26bc31cca3032f.jpg",
+    "static/media/15.jpg": "/storeWebsite/static/media/15.b1736926cf277080e74c.jpg",
+    "static/media/16.jpg": "/storeWebsite/static/media/16.4453331efd9671994bfa.jpg",
     "static/media/clothes.jpg": "/storeWebsite/static/media/clothes.700e2362cd4286274d54.jpg",
+    "static/media/2.jpg": "/storeWebsite/static/media/2.a291407404c93d6c71a8.jpg",
+    "static/media/3.jpg": "/storeWebsite/static/media/3.56dab993780811c33ce0.jpg",
+    "static/media/19.jpg": "/storeWebsite/static/media/19.d7a6733a79fe6f5ae3c9.jpg",
+    "static/media/17.jpg": "/storeWebsite/static/media/17.a5cd819c37ad39d69cd4.jpg",
+    "static/media/20.jpg": "/storeWebsite/static/media/20.855a65834802fcfd3dfd.jpg",
+    "static/media/12.jpg": "/storeWebsite/static/media/12.74aaf0903a25439e6a78.jpg",
+    "static/media/10.jpg": "/storeWebsite/static/media/10.191a0f77f80d162e85b8.jpg",
+    "static/media/14.jpg": "/storeWebsite/static/media/14.4d7a47dd4e41e41c0c39.jpg",
+    "static/media/1.jpg": "/storeWebsite/static/media/1.6c4cb8a5f1716f68f227.jpg",
+    "static/media/18.jpg": "/storeWebsite/static/media/18.6fa73f182c6cae2180fc.jpg",
+    "static/media/9.jpg": "/storeWebsite/static/media/9.1f8ed255c6ace210aee3.jpg",
+    "static/media/7.jpg": "/storeWebsite/static/media/7.27a0681073be711139ee.jpg",
+    "static/media/4.jpg": "/storeWebsite/static/media/4.f3c29f46a0a8c527f499.jpg",
     "static/media/digital-goods.jpg": "/storeWebsite/static/media/digital-goods.0aaae38fd0625aeb1cb1.jpg",
-    "static/media/original-products.svg": "/storeWebsite/static/media/original-products.93c5deaf40a2713725b02762f01ce4f0.svg",
+    "static/media/5.jpg": "/storeWebsite/static/media/5.7743b5f8097ec82e57cc.jpg",
+    "static/media/11.jpg": "/storeWebsite/static/media/11.a0b9c3de7ea8118d5a20.jpg",
+    "static/media/6.jpg": "/storeWebsite/static/media/6.c12cf14f0bbc4c859b0a.jpg",
+    "static/media/13.jpg": "/storeWebsite/static/media/13.cb567ce486fc2101948d.jpg",
     "static/media/cash-on-delivery.svg": "/storeWebsite/static/media/cash-on-delivery.2cdccdabb95a6df5b400a07e1b51bf74.svg",
     "static/media/days-return.svg": "/storeWebsite/static/media/days-return.2b815ec0aed38f3b8f7899d26342daef.svg",
     "static/media/express-delivery.svg": "/storeWebsite/static/media/express-delivery.7b2fc32344e761a7bc7805a55ca0927b.svg",
+    "static/media/support.svg": "/storeWebsite/static/media/support.98553f02457c58e78c628cd6199aa1f3.svg",
     "static/media/slick.svg": "/storeWebsite/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/storeWebsite/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/storeWebsite/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/storeWebsite/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/storeWebsite/index.html",
-    "main.bb8c7727.css.map": "/storeWebsite/static/css/main.bb8c7727.css.map",
-    "main.320d8441.js.map": "/storeWebsite/static/js/main.320d8441.js.map"
+    "main.7736a395.css.map": "/storeWebsite/static/css/main.7736a395.css.map",
+    "main.7b97c5be.js.map": "/storeWebsite/static/js/main.7b97c5be.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb8c7727.css",
-    "static/js/main.320d8441.js"
+    "static/css/main.7736a395.css",
+    "static/js/main.7b97c5be.js"
   ]
 }
